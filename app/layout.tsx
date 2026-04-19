@@ -15,11 +15,12 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="light" className="h-full">
       <head>
-        <script
+        <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1080914170096598"
-          crossorigin="anonymous"
-        ></script>
+          crossOrigin="anonymous"
+          strategy="beforeInteractive"
+        />
       </head>
       <body className="min-h-full flex flex-col bg-[var(--bg)] text-[var(--ink)]">
         {children}
