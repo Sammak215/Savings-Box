@@ -42,7 +42,7 @@ export default function Toolbar({ gridRef }: Props) {
 
   return (
     <div className="flex flex-col">
-    <div className="flex flex-wrap items-center gap-2 px-4 py-2 bg-[var(--surface)] border-b border-[var(--border)]">
+    <div data-tour="toolbar" className="flex flex-wrap items-center gap-2 px-4 py-2 bg-[var(--surface)] border-b border-[var(--border)]">
       <button
         onClick={fillRandom}
         className="btn-toolbar bg-[var(--gold)] text-[var(--ink)]"

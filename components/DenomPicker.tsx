@@ -23,7 +23,7 @@ export default function DenomPicker() {
   }
 
   return (
-    <div className="flex flex-col gap-2 p-3 bg-[var(--surface)] border-r border-[var(--border)] min-w-[120px] max-w-[140px]">
+    <div data-tour="denoms" className="flex flex-col gap-2 p-3 bg-[var(--surface)] border-r border-[var(--border)] min-w-[120px] max-w-[140px]">
       <p className="text-xs font-semibold text-[var(--ink)]/50 uppercase tracking-wider px-1">Amounts</p>
 
       {/* Eraser */}

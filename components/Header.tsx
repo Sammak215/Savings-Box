@@ -46,7 +46,7 @@ export default function Header() {
   return (
     <header className="flex items-center justify-between px-4 py-3 bg-[var(--surface)] border-b border-[var(--border)] gap-3 flex-wrap">
       {/* Editable title */}
-      <div className="flex items-center gap-2 min-w-0">
+      <div data-tour="title" className="flex items-center gap-2 min-w-0">
         {editing ? (
           <input
             ref={inputRef}

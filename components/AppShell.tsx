@@ -9,6 +9,7 @@ import DenomPicker from './DenomPicker'
 import Grid from './Grid'
 import StatsPanel from './StatsPanel'
 import Toolbar from './Toolbar'
+import Tour from './Tour'
 
 export default function AppShell() {
   const hydrateFromStorage = useSavingsStore((s) => s.hydrateFromStorage)
@@ -22,6 +23,7 @@ export default function AppShell() {
 
   return (
     <div className="flex flex-col h-screen overflow-hidden">
+      <Tour />
       <Header />
       <SetupPanel />
       <Toolbar gridRef={gridRef} />

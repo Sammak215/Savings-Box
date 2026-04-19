@@ -19,6 +19,7 @@ const Grid = forwardRef<HTMLDivElement>((_, ref) => {
         gap: '3px',
         containerType: 'inline-size',
       }}
+      data-tour="grid"
       className="w-full p-3 bg-[var(--bg)] print:p-0"
     >
       {Array.from({ length: cellCount }, (_, i) => (

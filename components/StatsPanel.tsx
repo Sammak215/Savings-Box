@@ -58,7 +58,7 @@ export default function StatsPanel() {
   ].filter(Boolean) as { label: string; value: string; sub: string | null }[]
 
   return (
-    <aside className="flex flex-col gap-4 p-4 bg-[var(--surface)] border-l border-[var(--border)] w-64 min-w-56 overflow-y-auto print:hidden">
+    <aside data-tour="stats" className="flex flex-col gap-4 p-4 bg-[var(--surface)] border-l border-[var(--border)] w-64 min-w-56 overflow-y-auto print:hidden">
       {/* Progress ring */}
       <div className="flex flex-col items-center gap-2">
         <ProgressRing percent={percentComplete} size={96} stroke={10} />
