@@ -66,6 +66,7 @@ export default function SetupPanel() {
   const target = useSavingsStore((s) => s.target)
   const denoms = useSavingsStore((s) => s.denoms)
   const setConfig = useSavingsStore((s) => s.setConfig)
+  const fillRandom = useSavingsStore((s) => s.fillRandom)
   const fillError = useSavingsStore((s) => s.fillError)
   const clearFillError = useSavingsStore((s) => s.clearFillError)
 
