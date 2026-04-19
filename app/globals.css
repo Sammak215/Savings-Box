@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+/* ── Theme tokens ─────────────────────────────────── */
+:root,
+[data-theme="light"] {
+  --bg:      #f5f0e8;
+  --surface: #ede8dc;
+  --ink:     #0f0e0c;
+  --gold:    #c9a84c;
+  --border:  #d8d0c0;
+}
+
+[data-theme="dark"] {
+  --bg:      #0f0e0c;
+  --surface: #1a1916;
+  --ink:     #f5f0e8;
+  --gold:    #e8c96a;
+  --border:  #2c2b28;
+}
+
+[data-theme="contrast"] {
+  --bg:      #ffffff;
+  --surface: #f0f0f0;
+  --ink:     #000000;
+  --gold:    #b8860b;
+  --border:  #cccccc;
+}
+
+/* ── Base ─────────────────────────────────────────── */
+html, body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ── Toolbar button ───────────────────────────────── */
+.btn-toolbar {
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: border-color 0.15s;
+  background: var(--bg);
+  color: var(--ink);
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+.btn-toolbar:hover {
+  border-color: var(--gold);
+}
+
+/* ── Print styles ─────────────────────────────────── */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #savings-grid,
+  #savings-grid * {
+    visibility: visible;
+  }
+  #savings-grid {
+    position: absolute;
+    inset: 0;
+    padding: 20px;
+  }
+}

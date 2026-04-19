@@ -1,0 +1,21 @@
+export function formatCurrency(value: number): string {
+  if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(1)}M`
+  if (value >= 1_000) return `${(value / 1_000).toFixed(1)}K`
+  return value.toLocaleString()
+}
+
+export function formatFull(value: number): string {
+  return value.toLocaleString()
+}
+
+export function formatDate(ts: number): string {
+  return new Date(ts).toLocaleDateString(undefined, {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  })
+}
+
+export function formatPercent(value: number): string {
+  return `${Math.round(value)}%`
+}
