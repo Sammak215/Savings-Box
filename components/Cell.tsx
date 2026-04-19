@@ -23,13 +23,12 @@ export default function Cell({ idx }: Props) {
   const cellNum = idx + 1
 
   function handleClick() {
-    if (selectedDenom === null) {
-      // eraser
-      if (value != null) setCell(idx, null)
-    } else {
-      // toggle: clicking filled cell with same denom clears it
-      if (value === selectedDenom) setCell(idx, null)
-      else setCell(idx, selectedDenom)
+    if (value != null) {
+      // clicking any filled cell always clears it
+      setCell(idx, null)
+    } else if (selectedDenom !== null) {
+      // clicking an empty cell fills it with selected denom
+      setCell(idx, selectedDenom)
     }
   }
 

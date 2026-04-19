@@ -151,11 +151,20 @@ export const useSavingsStore = create<SavingsState>()(
 
     clearGrid() {
       set((s) => {
-        const count = s.cols * s.rows
-        if (s.history.length >= MAX_HISTORY) s.history.shift()
-        s.history.push({ cells: [...s.cells], timestamps: [...s.timestamps] })
+        const count = DEFAULT_COLS * DEFAULT_ROWS
+        s.title = 'My Savings Box'
+        s.cols = DEFAULT_COLS
+        s.rows = DEFAULT_ROWS
+        s.denoms = DEFAULT_DENOMS
+        s.target = null
         s.cells = makeEmptyCells(count)
         s.timestamps = makeEmptyCells(count)
+        s.selectedDenom = DEFAULT_DENOMS[0].value
+        s.history = []
+        s.fillError = null
+        s.saveSlots = {}
+        s.activeSlot = 'default'
+        writeSaveSlots({})
       })
     },
 
