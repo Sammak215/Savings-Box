@@ -8,6 +8,9 @@ export default function SetupPanel() {
   const rows = useSavingsStore((s) => s.rows)
   const target = useSavingsStore((s) => s.target)
   const setConfig = useSavingsStore((s) => s.setConfig)
+  const fillRandom = useSavingsStore((s) => s.fillRandom)
+  const fillError = useSavingsStore((s) => s.fillError)
+  const clearFillError = useSavingsStore((s) => s.clearFillError)
 
   const [localTarget, setLocalTarget] = useState(target != null ? String(target) : '')
 
@@ -62,8 +65,23 @@ export default function SetupPanel() {
         />
       </label>
 
-      <div className="text-xs text-[var(--ink)]/40 self-center">
-        {cols * rows} cells total
+      <div className="ml-auto flex items-center gap-3 self-end">
+        {fillError && (
+          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-red-100 text-red-600 rounded-md text-xs">
+            <span>{fillError}</span>
+            <button onClick={clearFillError} className="font-bold leading-none">×</button>
+          </div>
+        )}
+        <div className="flex flex-col items-end gap-0.5">
+          <button
+            onClick={fillRandom}
+            className="px-4 py-1.5 rounded-md bg-[var(--gold)] text-[var(--ink)] text-sm font-semibold hover:opacity-90 transition"
+            title="R — auto-fill the grid"
+          >
+            Generate Grid
+          </button>
+          <span className="text-[10px] text-[var(--ink)]/40">{cols * rows} cells</span>
+        </div>
       </div>
     </div>
   )
