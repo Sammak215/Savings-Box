@@ -52,7 +52,7 @@ export default function AppShell() {
           className="flex-shrink-0 border-t border-[var(--border)] bg-[var(--surface)]/40 px-4 py-3"
           aria-label="About Savings Box"
         >
-          <p className="text-sm text-[var(--ink)]/75 max-w-3xl mb-3 leading-relaxed">
+          <p className="text-sm text-[var(--ink)]/75 max-w-3xl leading-relaxed">
             Savings Box is a visual cash savings tracker: choose bill and coin denominations, fill grid cells as
             you set money aside, set a savings target, and follow your progress in the stats panel. Export your
             grid to CSV, XLSX, or PNG when you need a record outside the app.
