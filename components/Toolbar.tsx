@@ -1,9 +1,7 @@
 'use client'
 
-import { useRef, useState } from 'react'
 import { useSavingsStore } from '@/store/useSavingsStore'
 import { exportCSV, exportXLSX, exportPNG } from '@/utils/exportUtils'
-import AdUnit from './ads/AdUnit'
 
 interface Props {
   gridRef: React.RefObject<HTMLDivElement | null>
@@ -22,18 +20,9 @@ export default function Toolbar({ gridRef }: Props) {
   const clearFillError = useSavingsStore((s) => s.clearFillError)
 
   const totalSaved = cells.reduce<number>((sum, c) => sum + (c ?? 0), 0)
-  const [showPostExport, setShowPostExport] = useState(false)
-  const postExportTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
-
-  function triggerPostExport() {
-    setShowPostExport(true)
-    if (postExportTimer.current) clearTimeout(postExportTimer.current)
-    postExportTimer.current = setTimeout(() => setShowPostExport(false), 4000)
-  }
 
   function handleExportPNG() {
     if (gridRef.current) exportPNG(gridRef.current, title)
-    triggerPostExport()
   }
 
   function handlePrint() {
@@ -41,7 +30,6 @@ export default function Toolbar({ gridRef }: Props) {
   }
 
   return (
-    <div className="flex flex-col">
     <div data-tour="toolbar" className="flex flex-wrap items-center gap-2 px-4 py-2 bg-[var(--surface)] border-b border-[var(--border)]">
       <button
         onClick={fillRandom}
@@ -54,13 +42,13 @@ export default function Toolbar({ gridRef }: Props) {
       <div className="w-px h-5 bg-[var(--border)]" />
 
       <button
-        onClick={() => { exportCSV(cells, cols, title); triggerPostExport() }}
+        onClick={() => { exportCSV(cells, cols, title) }}
         className="btn-toolbar"
       >
         CSV
       </button>
       <button
-        onClick={() => { exportXLSX(cells, cols, title, denoms, target, totalSaved); triggerPostExport() }}
+        onClick={() => { exportXLSX(cells, cols, title, denoms, target, totalSaved) }}
         className="btn-toolbar"
       >
         XLSX
@@ -101,23 +89,6 @@ export default function Toolbar({ gridRef }: Props) {
           <button onClick={clearFillError} className="font-bold">×</button>
         </div>
       )}
-    </div>
-
-    {/* Post-export ad — auto-hides after 4s */}
-    {showPostExport && (
-      <AdUnit
-        slot={process.env.NEXT_PUBLIC_ADSENSE_SLOT_EXPORT ?? ''}
-        format="horizontal"
-        className="w-full min-h-[90px] flex items-center justify-center bg-[var(--surface)] border-b border-[var(--border)]"
-      />
-    )}
-
-    {/* Bottom banner */}
-    <AdUnit
-      slot={process.env.NEXT_PUBLIC_ADSENSE_SLOT_BOTTOM ?? ''}
-      format="horizontal"
-      className="w-full min-h-[90px] flex items-center justify-center bg-[var(--surface)]/50 border-b border-[var(--border)]"
-    />
     </div>
   )
 }
